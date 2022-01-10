@@ -6,6 +6,6 @@ COPY templates ./templates
 COPY tests ./tests
 RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 9080
-ARG BUILD_FLOOD_FACTOR=0
-ENV FLOOD_FACTOR=$BUILD_FLOOD_FACTOR
+ARG FLOOD_FACTOR=0
+ENV FLOOD_FACTOR=$FLOOD_FACTOR
 CMD ["python", "productpage.py", "9080"]
