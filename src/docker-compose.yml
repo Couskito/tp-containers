@@ -28,3 +28,9 @@ services:
       - SERVICE_VERSION="v1"
     ports:
       - "1500:9080"
+  mysql:
+    build: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root #should be changed !
+    ports:
+      - "1567:3306"
