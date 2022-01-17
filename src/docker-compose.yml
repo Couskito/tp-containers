@@ -28,3 +28,7 @@ services:
       - SERVICE_VERSION="v1"
     ports:
       - "1500:9080"
+  mongodb:
+    build: mongodb
+    ports:
+      - "1600:27017"
