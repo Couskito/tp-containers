@@ -36,3 +36,7 @@ services:
       - "1567:3306"
     volumes:
       - mysql-volume:/var/lib/mysql
+  mongodb:
+    build: mongodb
+    ports:
+      - "1600:27017"
