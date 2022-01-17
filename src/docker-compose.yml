@@ -40,3 +40,8 @@ services:
     build: mongodb
     ports:
       - "1600:27017"
+    volumes:
+      - mongodb-volume:/data/db
+volumes:
+  mongodb-volume:
+  mysql-volume:
