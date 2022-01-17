@@ -14,3 +14,9 @@ services:
       - FLOOD_FACTOR=0
     ports:
       - "1400:9080"
+  ratings:
+    build: ratings
+    environment:
+      - SERVICE_VERSION="v1"
+    ports:
+      - "1500:9080"
