@@ -14,3 +14,11 @@ services:
       - FLOOD_FACTOR=0
     ports:
       - "1400:9080"
+  reviews:
+    build: reviews/reviews-wlpcfg
+    environment:
+      - service_version="v1"
+      - enable_ratings="false"
+      - enable star_color="black"
+    ports:
+      - "1580:9080"
