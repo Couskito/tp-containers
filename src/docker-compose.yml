@@ -8,3 +8,9 @@ services:
       - ENABLE_EXTERNAL_BOOK_SERVICE="false"
     ports:
       - "1337:9080"
+  productpage:
+    build: productpage
+    environment:
+      - FLOOD_FACTOR=0
+    ports:
+      - "1400:9080"
