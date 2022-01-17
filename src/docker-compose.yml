@@ -22,3 +22,9 @@ services:
       - enable star_color="black"
     ports:
       - "1580:9080"
+  ratings:
+    build: ratings
+    environment:
+      - SERVICE_VERSION="v1"
+    ports:
+      - "1500:9080"
