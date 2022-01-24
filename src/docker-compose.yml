@@ -1,14 +1,11 @@
 version: "2"
     
 services:
-  detail:
+  details:
     build: details
     environment:
       - SERVICE_VERSION="v1"
       - ENABLE_EXTERNAL_BOOK_SERVICE="false"
-    ports:
-      - "9080:9080"
-    hostname: details
   productpage:
     build: productpage
     environment:
@@ -22,27 +19,19 @@ services:
       - enable_ratings="false"
       - enable star_color="black"
     ports:
-      - "9079:9080"
-    hostname: reviews
+      - "81:9080"
   ratings:
     build: ratings
     environment:
       - SERVICE_VERSION="v1"
-    ports:
-      - "9081:9080"
-    hostname: ratings
   mysql:
     build: mysql
     environment:
       - MYSQL_ROOT_PASSWORD=root #should be changed !
-    ports:
-      - "1567:3306"
     volumes:
       - mysql-volume:/var/lib/mysql
   mongodb:
     build: mongodb
-    ports:
-      - "1600:27017"
     volumes:
       - mongodb-volume:/data/db
 volumes:
