@@ -7,13 +7,14 @@ services:
       - SERVICE_VERSION="v1"
       - ENABLE_EXTERNAL_BOOK_SERVICE="false"
     ports:
-      - "1337:9080"
+      - "9080:9080"
+    hostname: details
   productpage:
     build: productpage
     environment:
       - FLOOD_FACTOR=0
     ports:
-      - "1400:9080"
+      - "80:9080"
   reviews:
     build: reviews/reviews-wlpcfg
     environment:
@@ -21,13 +22,15 @@ services:
       - enable_ratings="false"
       - enable star_color="black"
     ports:
-      - "1580:9080"
+      - "9079:9080"
+    hostname: reviews
   ratings:
     build: ratings
     environment:
       - SERVICE_VERSION="v1"
     ports:
-      - "1500:9080"
+      - "9081:9080"
+    hostname: ratings
   mysql:
     build: mysql
     environment:
