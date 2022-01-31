@@ -13,13 +13,7 @@ services:
     ports:
       - "80:9080"
   reviews:
-    build: reviews/reviews-wlpcfg
-    environment:
-      - service_version="v1"
-      - enable_ratings="false"
-      - enable star_color="black"
-    ports:
-      - "81:9080"
+    image: docker.io/istio/examples-bookinfo-reviews-v1:1.16.2
   ratings:
     build: ratings
     environment:
