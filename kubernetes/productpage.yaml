@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: productpage
+spec:
+  containers:
+    - name: productpage
+      image: localhost:5001/productpage:1.0
+      ports:
+        - containerPort: 9080
+      env:
+        - name: FLOOD_FACTOR
+          value: "0"
