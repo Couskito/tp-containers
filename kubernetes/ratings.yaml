@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ratings
+spec:
+  containers:
+    - name: ratings
+      image: localhost:5001/ratings:1.0
+      ports:
+        - containerPort: 9080
+      env:
+        - name: SERVICE_VERSION
+          value: "v1"
