@@ -3,6 +3,7 @@ version: "2"
 services:
   details:
     build: details
+    image: localhost:5001/details:1.0
     environment:
       - SERVICE_VERSION="v1"
       - ENABLE_EXTERNAL_BOOK_SERVICE="false"
@@ -16,16 +17,19 @@ services:
     image: docker.io/istio/examples-bookinfo-reviews-v1:1.16.2
   ratings:
     build: ratings
+    image: localhost:5001/ratings:1.0
     environment:
       - SERVICE_VERSION="v1"
   mysql:
     build: mysql
+    image: localhost:5001/mysql:1.0
     environment:
       - MYSQL_ROOT_PASSWORD=root #should be changed !
     volumes:
       - mysql-volume:/var/lib/mysql
   mongodb:
     build: mongodb
+    image: localhost:5001/mongodb:1.0
     volumes:
       - mongodb-volume:/data/db
 volumes:
