@@ -3,7 +3,7 @@ kind: Pod
 metadata:
   name: details
   labels:
-    app: reviews
+    app: details
 spec:
   containers:
     - name: details
