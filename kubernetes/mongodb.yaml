@@ -1,19 +1,28 @@
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: mongodb
+  name: mongodb-deployment
   labels:
     app: mongodb
 spec:
-  containers:
-    - name: mongodb
-      image: localhost:5001/mongodb:1.0
-      ports:
-        - containerPort: 27017
-      volumeMounts:
-        - mountPath: /data/db
-          name: mongodb-volume
-  volumes:
-  - name: mongodb-volume
-    emptyDir:
-      medium: Memory
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mongodb
+  template:
+    metadata:
+      labels:
+        app: mongodb
+    spec:
+      containers:
+        - name: mongodb
+          image: docker.io/istio/examples-bookinfo-mongodb:1.16.2
+          ports:
+            - containerPort: 27017
+          volumeMounts:
+            - mountPath: /data/db
+              name: mongodb-volume
+      volumes:
+      - name: mongodb-volume
+        emptyDir:
+          medium: Memory
