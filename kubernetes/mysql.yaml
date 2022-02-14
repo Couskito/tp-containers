@@ -13,4 +13,10 @@ spec:
       env:
         - name: MYSQL_ROOT_PASSWORD
           value: "root"
-#TODO : VOLUME
+      volumeMounts:
+        - mountPath: /var/lib/mysql
+          name: mysql-volume
+  volumes:
+  - name: mysql-volume
+    emptyDir:
+      medium: Memory
