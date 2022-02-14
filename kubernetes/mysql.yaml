@@ -1,22 +1,31 @@
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: mysql
+  name: mysql-deployment
   labels:
     app: mysql
 spec:
-  containers:
-    - name: mysql
-      image: localhost:5001/mysql:1.0
-      ports:
-        - containerPort: 3306
-      env:
-        - name: MYSQL_ROOT_PASSWORD
-          value: "root"
-      volumeMounts:
-        - mountPath: /var/lib/mysql
-          name: mysql-volume
-  volumes:
-  - name: mysql-volume
-    emptyDir:
-      medium: Memory
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+        - name: mysql
+          image: docker.io/istio/examples-bookinfo-mysqldb:1.16.2
+          ports:
+            - containerPort: 3306
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: "root"
+          volumeMounts:
+            - mountPath: /var/lib/mysql
+              name: mysql-volume
+      volumes:
+      - name: mysql-volume
+        emptyDir:
+          medium: Memory
