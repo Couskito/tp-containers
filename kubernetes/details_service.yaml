@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: details-service
+  name: details
 spec:
   selector:
     app: details
   ports:
     - protocol: TCP
-      port: 1000
+      port: 9080
       targetPort: 9080
