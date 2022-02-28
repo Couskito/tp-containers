@@ -21,4 +21,4 @@ spec:
             - containerPort: 9080
           env:
             - name: SERVICE_VERSION
-              value: "v2"
+              value: "v1"

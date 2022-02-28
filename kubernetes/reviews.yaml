@@ -1,12 +1,21 @@
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: reviews
+  name: reviews-deployment
   labels:
     app: reviews
 spec:
-  containers:
-  - name: reviews
-    image: docker.io/istio/examples-bookinfo-reviews-v1:1.16.2
-    ports:
-    - containerPort: 9080
+  replicas: 5
+  selector:
+    matchLabels:
+      app: reviews
+  template:
+    metadata:
+      labels:
+        app: reviews
+    spec:
+      containers:
+      - name: reviews
+        image: docker.io/istio/examples-bookinfo-reviews-v1:1.16.2
+        ports:
+        - containerPort: 9080

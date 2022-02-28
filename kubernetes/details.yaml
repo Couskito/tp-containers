@@ -1,17 +1,26 @@
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: details
+  name: details-deployment
   labels:
     app: details
 spec:
-  containers:
-    - name: details
-      image: localhost:5001/details:1.0
-      ports:
-        - containerPort: 9080
-      env:
-        - name: SERVICE_VERSION
-          value: "v1"
-          name: ENABLE_EXTERNAL_BOOK_SERVICE
-          value: "false"
+  replicas: 3
+  selector:
+    matchLabels:
+      app: details
+  template:
+    metadata:
+      labels:
+        app: details
+    spec:
+      containers:
+        - name: details
+          image: localhost:5001/details:1.0
+          ports:
+            - containerPort: 9080
+          env:
+            - name: SERVICE_VERSION
+              value: "v1"
+              name: ENABLE_EXTERNAL_BOOK_SERVICE
+              value: "false"
