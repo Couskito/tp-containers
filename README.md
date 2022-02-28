@@ -14,3 +14,5 @@ Le code des différents services est présent dans `src/`.
 ## Définitions de l'API
 
 L'API visible de l'utilisateur est définie dans le fichier `swagger.yaml`. Pour visualiser le fichier, vous pouvez utiliser le [Swagger editor](https://editor.swagger.io/).
+
+alias docker-compose="~/.docker/cli-plugins/docker-compose"
