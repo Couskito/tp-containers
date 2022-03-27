@@ -9,13 +9,28 @@ Julien POLYCARPE
 
 # Emplacement des divers élements
 
-## Manifests Kubernetes
-
-Présents dans le dossier kubernetes
-
 ## Docker-compose
 
-Présent à l'emplacement src/docker-compose.yml
+Présents à l'emplacement docker-compose/ :
+- docker-compose/fil-rouge/docker-compose.yaml : docker-compose du fil rouge du TP
+- docker-compose/wordpress/docker-compose.yaml : docker-compose de l'exemple wordpress du TP
+
+## Ingress Kubernetes
+
+Présents dans le dossier ingress_test. Contient un script bash initialisant un registre kind avec l'utilisation d'ingress, et également un service Ingress utilisé pour exposer le service productpage à l'extérieur du cluster. Non fonctionnel : le port forwarding ne semble pas être effectué.
+
+## Scripts Kind
+
+Présents dans le dossier kind_init :
+- kind_registry.sh : script permettant la mise en place d'un cluster kind avec un registre local, à utiliser pour lancer les manifests kubernetes
+
+Remarque : pour utiliser les images Docker locales via Kubernetes par la suite, effectuer les commandes suivantes dans le dossier docker-compose/fil-rouge/ pour les push dans le registre local initialisé avec Kind :
+- docker compose build
+- docker compose push
+
+## Manifests Kubernetes
+
+Présents dans le dossier kubernetes. Contient deux dossiers : celui pour le fil-rouge, et celui pour l'utilisation de kuard.
 
 ## Dockerfiles
 
@@ -42,4 +57,4 @@ L'API visible de l'utilisateur est définie dans le fichier `swagger.yaml`. Pour
 
 ## Compte rendu des TPs
 
-Présents dans le dossier compte-rendu
+Présents dans le dossier comptes-rendus.
