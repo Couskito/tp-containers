@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ratings-deployment
+  name: ratings-deployment-blue
   labels:
-    app: ratings
+    app: ratings-blue
 spec:
   replicas: 5
   selector:
     matchLabels:
-      app: ratings
+      app: ratings-blue
   template:
     metadata:
       labels:
-        app: ratings
+        app: ratings-blue
     spec:
       containers:
         - name: ratings
@@ -22,6 +22,43 @@ spec:
           env:
             - name: SERVICE_VERSION
               value: "v1"
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 9080
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          livenessProbe:
+            exec:
+              command:
+                - ls
+            initialDelaySeconds: 10
+            periodSeconds: 10
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ratings-deployment-green
+  labels:
+    app: ratings-green
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: ratings-green
+  template:
+    metadata:
+      labels:
+        app: ratings-green
+    spec:
+      containers:
+        - name: ratings
+          image: localhost:5001/ratings:1.0
+          ports:
+            - containerPort: 9080
+          env:
+            - name: SERVICE_VERSION
+              value: "v2"
           readinessProbe:
             httpGet:
               path: /health

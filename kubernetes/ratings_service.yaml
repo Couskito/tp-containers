@@ -4,7 +4,7 @@ metadata:
   name: ratings
 spec:
   selector:
-    app: ratings
+    app: ratings-blue
   ports:
     - protocol: TCP
       port: 9080
