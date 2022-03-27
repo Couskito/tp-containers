@@ -19,3 +19,15 @@ spec:
         image: docker.io/istio/examples-bookinfo-reviews-v1:1.16.2
         ports:
         - containerPort: 9080
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 9080
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        livenessProbe:
+          exec:
+            command:
+              - ls
+          initialDelaySeconds: 10
+          periodSeconds: 10

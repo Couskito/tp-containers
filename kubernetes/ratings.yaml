@@ -22,3 +22,15 @@ spec:
           env:
             - name: SERVICE_VERSION
               value: "v1"
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 9080
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          livenessProbe:
+            exec:
+              command:
+                - ls
+            initialDelaySeconds: 10
+            periodSeconds: 10
